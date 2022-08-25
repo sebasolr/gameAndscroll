@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libros</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+<style>
+  #txtArea {
+    border: 1px solid black;
+    min-height: 100px;
+  }
+</style>
+
+<body>
+  <div class="container mt-5">
+    <div class="row ">
+      <div class="col-12">
+        <label for="">Your Gold</label>
+        <input type="number" class="ms-4 ps-2" placeholder="0" value="{{puntaje}}" disabled>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-3 border">
+        <form action="/gold/process_money" method="post">
+          <input type="hidden" name="opcion" value="farm">
+          <h2 class="text-center mt-5">Farm</h2>
+          <p class="text-center">earns 10-20 golds</p>
+          <div class="text-center mb-5">
+
+            <button type="submit" class="btn btn-info">Find Gold!</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-3 border">
+        <form action="/gold/process_money" method="post">
+          <input type="hidden" name="opcion" value="cave">
+          <h2 class="text-center mt-5">Cave</h2>
+          <p class="text-center">earns 5-10 golds</p>
+          <div class="text-center mb-5">
+
+            <button type="submit" class="btn btn-info">Find Gold!</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-3 border">
+        <form action="/gold/process_money" method="post">
+          <input type="hidden" name="opcion" value="house">
+          <h2 class="text-center mt-5">House</h2>
+          <p class="text-center">earns 2-5 golds</p>
+          <div class="text-center mb-5">
+
+            <button type="submit" class="btn btn-info">Find Gold!</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-3 border">
+        <form action="/gold/process_money" method="post">
+          <input type="hidden" name="opcion" value="casino">
+          <h2 class="text-center mt-5">Casino</h2>
+          <p class="text-center">earns/takes 0-50 golds</p>
+          <div class="text-center mb-5">
+
+            <button type="submit" class="btn btn-info">Find Gold!</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <div class="row mt-5 overflow-auto" style="height: 400px; border: solid 1px black;" data-spy="scroll">
+      <h3>Activities</h3>
+      <div  data-spy="scroll" class="col-12"  data-offset="0" class="overflow-auto" >
+        {%for frase in array %}
+          {% if frase >= 0 %}
+              <p style="color: green;">El puntaje obtenido es {{frase}}</p>
+          {% else %}  
+          <p style="color: red;">El puntaje restado es {{frase}}</p>
+          {%endif%}
+          
+        {%endfor%}
+      </div>
+    </div>
+</body>
